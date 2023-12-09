@@ -99,7 +99,6 @@
     foreach ($entities as $entity) {
         echo "<tr><td>$entity</td>" . generateEntityButtons($entity) . "</tr>";
     }
-
     echo "</table>";
     echo "<p><a href='index.php'>Home</a></p>"
     ?>
