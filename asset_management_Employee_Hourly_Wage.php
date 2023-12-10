@@ -86,13 +86,10 @@ switch ($action) {
     case 'insert':
         displayEmployeeHourlyWageInsertForm();
     
-        // Process the form submission
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Validate and sanitize input data
             $id = mysqli_real_escape_string($conn, $_POST['id']);
             $rate = mysqli_real_escape_string($conn, $_POST['rate']);
     
-            // Perform the SQL insertion
             $sql = "INSERT INTO hourly_rate (ID, Rate) VALUES ('$id', '$rate')";
     
             if (mysqli_query($conn, $sql)) {
@@ -147,7 +144,6 @@ switch ($action) {
         echo "<div class='container mt-4'>";
         echo "<h1 class='text-center'>View Employee Hourly Wages</h1>";
 
-        // Fetch and display rows from the 'employee_hourly_wage' table
         $result = mysqli_query($conn, "SELECT * FROM hourly_rate");
 
         if ($result) {

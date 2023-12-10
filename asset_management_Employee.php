@@ -86,9 +86,7 @@ switch ($action) {
     case 'insert':
         displayEmployeeInsertForm();
     
-        // Process the form submission
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Validate and sanitize input data
             $ID = mysqli_real_escape_string($conn, $_POST['ID']);
             $startDate = mysqli_real_escape_string($conn, $_POST['startDate']);
             $jobtype = mysqli_real_escape_string($conn, $_POST['jobtype']);
@@ -129,7 +127,6 @@ switch ($action) {
                 displayEmployeeUpdateForm($row);
     
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    // Validate and sanitize input data
                     $startDate = mysqli_real_escape_string($conn, $_POST['startDate']);
                     $jobtype = mysqli_real_escape_string($conn, $_POST['jobtype']);
                     $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
@@ -144,7 +141,6 @@ switch ($action) {
                     $ConcRevenueTypesID = mysqli_real_escape_string($conn, $_POST['ConcRevenueTypesID']);
                     $ZARevenueTypesID = mysqli_real_escape_string($conn, $_POST['ZARevenueTypesID']);
     
-                    // Perform the SQL update
                     $updateQuery = "UPDATE employee SET 
                                     startDate = '$startDate', 
                                     jobtype = '$jobtype', 

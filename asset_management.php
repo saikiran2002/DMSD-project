@@ -83,14 +83,12 @@
     <h1>Asset Management</h1>
 
     <?php
-    // Function to generate buttons for each entity
     function generateEntityButtons($entity) {
         return "<td><a href='asset_management_$entity.php?entity=$entity&action=insert' class='button'>Insert</a> 
                 <a href='asset_management_$entity.php?entity=$entity&action=view' class='button'>View</a></td>";
                 //  <a href='asset_management_$entity.php?entity=$entity&action=update' class='button'>Update</a> 
     }
 
-    // Display table with buttons for each entity
     $entities = ['Animal', 'Building', 'Attraction', 'Employee', 'Employee_Hourly_Wage'];
 
     echo "<table>";

@@ -48,7 +48,6 @@
 <body>
 
 <?php
-// Display menu options
     echo "<h2>Menu:</h2>";
     echo "<ol>";
     echo "<li><a href='asset_management.php'>Asset Management</a></li>";

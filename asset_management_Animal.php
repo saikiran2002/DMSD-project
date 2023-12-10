@@ -111,21 +111,17 @@
         case 'update':
             echo "<p>Updating action on Animal</p>";
         
-            // Check if an ID is provided
             if (isset($_GET['id'])) {
                 $animalID = mysqli_real_escape_string($conn, $_GET['id']);
         
-                // Fetch the existing data for the given ID
                 $query = "SELECT * FROM animal WHERE ID = '$animalID'";
                 $result = mysqli_query($conn, $query);
         
                 if ($result) {
                     $row = mysqli_fetch_assoc($result);
         
-                    // Display the update form with existing data pre-filled
                     displayAnimalUpdateForm($row);
         
-                    // Process the form submission
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $status = mysqli_real_escape_string($conn, $_POST['Status']);
                         $birthYear = mysqli_real_escape_string($conn, $_POST['BirthYear']);
@@ -133,7 +129,6 @@
                         $enclosureID = mysqli_real_escape_string($conn, $_POST['EnclosureID']);
                         $speciesID = mysqli_real_escape_string($conn, $_POST['SpeciesID']);
         
-                        // Update the record in the database
                         $updateQuery = "UPDATE animal SET 
                                         status1 = '$status', 
                                         BirthYear = '$birthYear', 
@@ -165,7 +160,7 @@
             echo "<div class='container mt-4'>";
             echo "<h1 class='text-center'>View Animals</h1>";
 
-            // Fetch and display rows from the 'animal' table
+
             $result = mysqli_query($conn, "SELECT * FROM animal");
 
             if ($result) {

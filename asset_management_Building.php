@@ -86,14 +86,11 @@ switch ($action) {
         echo "<h2>Inserting action on Building</h2>";
         displayBuildingInsertForm();
 
-        // Process the form submission
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Validate and sanitize input data
             $ID = mysqli_real_escape_string($conn,$_POST['ID']);
             $name = mysqli_real_escape_string($conn, $_POST['name']);
             $type = mysqli_real_escape_string($conn, $_POST['type']);
 
-            // Perform the SQL insertion
             $sql = "INSERT INTO building VALUES ('$ID','$name', '$type')";
 
             if (mysqli_query($conn, $sql)) {
@@ -152,7 +149,6 @@ switch ($action) {
         echo "<div class='container mt-4'>";
             echo "<h1 class='text-center'>View Animals</h1>";
 
-            // Fetch and display rows from the 'animal' table
             $result = mysqli_query($conn, "SELECT * FROM building");
 
             if ($result) {
