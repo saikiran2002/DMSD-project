@@ -1,110 +1,73 @@
-<!-- daily_activity.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Zoo Activity</title>
+    <title>Attraction Handler</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        .page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        h1 {
-            color: #007BFF;
-        }
-
-        table {
-            border-collapse: collapse;
-            margin-top: 20px;
-            width: 80%;
-            max-width: 600px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #007BFF;
-            color: #fff;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 5px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #007BFF;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        p {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        p a {
-            text-decoration: none;
-            color: #007BFF;
-            font-weight: bold;
-        }
-
-        p a:hover {
-            color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <?php include('navbar.php'); ?>
+    <?php include('db.php');?>
+    <div class="container mt-4">
+        <h1 class="text-center">Attraction Revenue</h1>
 
-    <div class="page">
-        <h1>Daily Zoo Activity</h1>
+        <?php
+    
+        $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-        <table>
-            <tr>
-                <th>Table Name</th>
-                <th>Actions</th>
-            </tr>
-            <tr>
-                <td>Attraction</td>
-                <td>
-                    <a href='attraction_handler.php?action=insert' class='button'>Insert</a>
-                    <a href='attraction_handler.php?action=view' class='button'>View</a>
-                    <a href='attraction_handler.php?action=update' class='button'>Update</a>
-                </td>
-            </tr>
-            <!-- Add more rows for other entities -->
-        </table>
+        switch ($action) {
+            case 'revenue':
+                global $conn;
 
-        <p><a href='index.php'>Home</a></p>
+                $query = "
+                    SELECT
+                        r.Date_time,
+                        r.Revenue,
+                        r.TicketSold
+                    FROM
+                        revenueevents r
+                    INNER JOIN
+                        revenuetypes rt ON r.Revenue_types_ID = rt.ID
+                    WHERE
+                        rt.TYPE = 'AS'
+                ";
+
+                $result = mysqli_query($conn, $query);
+
+                if ($result) {
+                    echo "<div class='container mt-4 d-flex align-items-center justify-content-center'>";
+                    echo "<table class='table table-bordered'>";
+                    echo "<thead class='thead-dark'>";
+                    echo "<tr><th>Date</th><th>Revenue</th><th>Tickets Sold</th></tr>";
+                    echo "</thead><tbody>";
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>{$row['Date_time']}</td>";
+                        echo "<td>{$row['Revenue']}</td>";
+                        echo "<td>{$row['TicketSold']}</td>";
+                        echo "</tr>";
+                    }
+
+                    echo "</tbody></table>";
+                    echo "</div>";
+
+                } else {
+                    echo "<p class='text-danger'>Error fetching revenue events: " . mysqli_error($conn) ."</p>";
+
+                }
+                break;
+
+            default:
+                echo "<p class='text-danger'>Invalid action selected.</p>";
+                break;
+        }
+        ?>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

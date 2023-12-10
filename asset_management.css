@@ -1,0 +1,66 @@
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width:50%;
+    margin-left:25%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.table-hover tbody tr:hover {
+    background-color: black;
+}
+.table thead th {
+    background-color: #007BFF; 
+    color: #fff; 
+}
+.insert {
+    background-color: #e6f2ff;
+}
+
+h2 {
+    color: #007BFF;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+td{
+    text-align: center;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type='submit'] {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type='submit']:hover {
+    background-color: #0056b3;
+}
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #0056b3;
+}

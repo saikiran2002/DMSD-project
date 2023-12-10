@@ -6,74 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animal Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            width:50%;
-            margin-left:25%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-        .table-hover tbody tr:hover {
-            background-color: black;
-        }
-        .table thead th {
-            background-color: #007BFF; 
-            color: #fff; 
-        }
-        .insert {
-            background-color: #e6f2ff;
-        }
-
-        h2 {
-            color: #007BFF;
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        td{
-            text-align: center;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        input[type='submit'] {
-            background-color: #007BFF;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        input[type='submit']:hover {
-            background-color: #0056b3;
-        }
-        p {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #007BFF;
-            font-weight: bold;
-        }
-
-        a:hover {
-            color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="asset_management.css">
 </head>
 
 <body>
